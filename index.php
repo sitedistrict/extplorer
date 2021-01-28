@@ -60,6 +60,7 @@ echo '<?xml version="1.0" encoding="'. $GLOBALS["charset"].'">';
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<?php echo $mainframe->getHead(); ?>
+		<style>#ext_header, .x-splitbar-v { display: none; }</style>
 		<link rel="shortcut icon" href="<?php echo _EXT_URL ?>/eXtplorer.ico" />
  		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $GLOBALS["charset"]; ?>" />
 		<meta name="robots" content="noindex, nofollow" />
