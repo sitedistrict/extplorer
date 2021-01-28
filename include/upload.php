@@ -167,6 +167,7 @@ class ext_Upload extends ext_Action {
 				"session_name": "<?php echo session_name()?>",
 				"user_agent": "<?php echo addslashes( $_SERVER['HTTP_USER_AGENT'] ) ?>",
 				"option": "com_extplorer", 
+				"root": (new URLSearchParams(window.location.search)).get('root'),
 				"action": "upload", 
 				"dir": datastore.directory, 
 				"requestType": "xmlhttprequest",
@@ -244,6 +245,7 @@ class ext_Upload extends ext_Action {
 					// add some vars to the request, similar to hidden fields
 					"params": {
 						"option": "com_extplorer", 
+						"root": (new URLSearchParams(window.location.search)).get('root'),
 						"action": "upload", 
 						"dir": datastore.directory,
 						"requestType": "xmlhttprequest",
@@ -307,6 +309,7 @@ class ext_Upload extends ext_Action {
 					// add some vars to the request, similar to hidden fields
 					params: {
 						"option": "com_extplorer", 
+						"root": (new URLSearchParams(window.location.search)).get('root'),
 						"action": "transfer", 
 						"dir": datastore.directory,
 						"confirm": 'true',

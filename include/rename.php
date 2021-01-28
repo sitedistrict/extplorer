@@ -115,6 +115,7 @@ class ext_Rename extends ext_Action {
 		"text": "<?php echo ext_Lang::msg( 'btnsave', true ) ?>", 
 		"handler": function() {
 			statusBarMessage( 'Please wait...', true );
+			var query = new URLSearchParams(window.location.search);
 			form = Ext.getCmp("simpleform").getForm();
 			form.submit({
 				//reset: true,
@@ -142,6 +143,7 @@ class ext_Rename extends ext_Action {
 				// add some vars to the request, similar to hidden fields
 				params: {
 					option: 'com_extplorer', 
+					root: query.get('root'),
 					action: 'rename', 
 					dir: '<?php echo stripslashes($dir) ?>', 
 					item: '<?php echo stripslashes($item) ?>', 

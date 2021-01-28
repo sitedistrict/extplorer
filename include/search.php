@@ -314,6 +314,7 @@ function show_searchform($dir='') {
                         ]),
                         baseParams: {
                             limit:20,
+                            root: (new URLSearchParams(window.location.search)).get('root'),
                             option: "com_extplorer",
                             action:"search",
                             dir: "<?php echo $dir ?>",

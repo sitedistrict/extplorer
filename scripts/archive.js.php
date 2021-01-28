@@ -22,9 +22,10 @@ if( !defined( '_JEXEC' ) && !defined( '_VALID_MOS' ) ) die( 'Restricted access' 
 		});
 	}
 	params = getRequestParams();
-	params.action = 'archive',
-	params.startfrom = startfrom,
-	params.confirm = 'true'
+	params.action = 'archive';
+	params.startfrom = startfrom;
+	params.confirm = 'true';
+	params.root = (new URLSearchParams(window.location.search)).get('root');
 	
 	form.submit({
 		reset: false,

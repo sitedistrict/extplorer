@@ -151,6 +151,7 @@ class ext_Mkitem extends ext_Action {
 					scope: Ext.getCmp("simpleform"),
 					// add some vars to the request, similar to hidden fields
 					params: {option: "com_extplorer", 
+							root: (new URLSearchParams(window.location.search)).get('root'),
 							action: "mkitem", 
 							dir: datastore.directory, 
 							confirm: "true",

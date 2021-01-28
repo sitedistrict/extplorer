@@ -42,6 +42,8 @@ Ext.BLANK_IMAGE_URL = '<?php echo _EXT_URL ?>/scripts/extjs3/resources/images/de
 	*/
     function chDir( directory, loadGridOnly ) {
 
+		var query = new URLSearchParams(window.location.search);
+
     	if( datastore.directory.replace( /\//g, '' ) == directory.replace( /\//g, '' )
     		&& datastore.getTotalCount() > 0 && directory != '') {
     		// Prevent double loading
@@ -50,11 +52,26 @@ Ext.BLANK_IMAGE_URL = '<?php echo _EXT_URL ?>/scripts/extjs3/resources/images/de
     	datastore.directory = directory;
     	var conn = datastore.proxy.getConnection();
     	if( directory == '' || conn && !conn.isLoading()) {
-    		datastore.load({params:{start:0, limit:150, dir: directory, option:'com_extplorer', action:'getdircontents', sendWhat: datastore.sendWhat }});
+    		datastore.load({
+    			params: {
+					root: query.get('root'),
+    				start:0, 
+    				limit:150, 
+    				dir: directory, 
+    				option:'com_extplorer', 
+    				action:'getdircontents', 
+    				sendWhat: datastore.sendWhat 
+    			}
+    		});
     	}
 		Ext.Ajax.request({
 			url: '<?php echo basename( $GLOBALS['script_name']) ?>',
-			params: { action:'chdir_event', dir: directory, option: 'com_extplorer' },
+			params: { 
+				action:'chdir_event', 
+				root: query.get('root'),
+				dir: directory, 
+				option: 'com_extplorer' 
+			},
 			callback: function(options, success, response ) {
 				if( success ) {
 					checkLoggedOut( response ); // Check if current user is logged off. If yes, Joomla! sends a document.location redirect, which will be eval'd here
@@ -385,9 +402,12 @@ function getRequestParams() {
 		}
 		dir = datastore.directory;
 	}
+	var query = new URLSearchParams(window.location.search);
+
 	//Ext.Msg.alert("Debug", dir );
 	var requestParams = {
 		option: 'com_extplorer',
+		root: query.get('root'),
 		dir: dir,
 		item: selitems.length > 0 ? selitems[0]:'',
 		'selitems[]': selitems,

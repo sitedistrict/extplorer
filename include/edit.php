@@ -193,6 +193,7 @@ class ext_Edit extends ext_Action {
  		"text": "<?php echo ext_Lang::msg('btnsave', true ) ?>", 
 		"handler": function() {
 			statusBarMessage( '<?php echo ext_Lang::msg('save_processing', true ) ?>', true );
+			var query = new URLSearchParams(window.location.search);
 			form = Ext.getCmp("<?php echo $id_hash ?>").getForm();
 			form.submit({
 				waitMsg: 'Saving the File, please wait...',
@@ -209,6 +210,7 @@ class ext_Edit extends ext_Action {
 				// add some vars to the request, similar to hidden fields
 				params: {option: 'com_extplorer', 
 						action: 'edit', 
+						root: query.get('root'),
 						code: editAreaLoader.getValue("ext_codefield<?php echo $id_hash ?>"),
 						dir: '<?php echo stripslashes($dir) ?>', 
 						item: '<?php echo stripslashes($item) ?>', 
@@ -223,6 +225,7 @@ class ext_Edit extends ext_Action {
 		"text": "<?php echo ext_Lang::msg('btnreopen', true ) ?>", 
 		"handler": function() { 
 			statusBarMessage( '<?php echo ext_Lang::msg('reopen_processing', true ) ?>', true );
+			var query = new URLSearchParams(window.location.search);
 			form = Ext.getCmp("<?php echo $id_hash ?>").getForm();
 			form.submit({
 				waitMsg: 'Processing Data, please wait...',
@@ -239,6 +242,7 @@ class ext_Edit extends ext_Action {
 				// add some vars to the request, similar to hidden fields
 				params: {
 					option: 'com_extplorer', 
+					root: query.get('root'),
 					action: 'edit', 
 					dir: '<?php echo stripslashes($dir) ?>', 
 					item: '<?php echo stripslashes($item) ?>', 

@@ -44,7 +44,7 @@ function ext_init(){
         proxy: new Ext.data.HttpProxy({
             url: "<?php echo $GLOBALS['script_name'] ?>",
             directory: "/",
-            params:{start:0, limit:150, dir: this.directory, option:"com_extplorer", action:"getdircontents" }
+            params:{start:0, limit:150, dir: this.directory, option:"com_extplorer", action:"getdircontents", root: (new URLSearchParams(window.location.search)).get('root')}
         }),
 		directory: "/",
 		sendWhat: "both",
@@ -500,7 +500,8 @@ function ext_init(){
     
     // trigger the data store load
     function loadDir() {
-    	datastore.load({params:{start:0, limit:150, dir: datastore.directory, option:'com_extplorer', action:'getdircontents', sendWhat: datastore.sendWhat }});
+      var query = new URLSearchParams(window.location.search);
+    	datastore.load({params:{start:0, limit:150, root: query.get('root'), dir: datastore.directory, option:'com_extplorer', action:'getdircontents', sendWhat: datastore.sendWhat }});
     }
    
     
@@ -788,7 +789,7 @@ function ext_init(){
     	    loader: new Ext.tree.TreeLoader({
     	    	preloadChildren: true,
     	        dataUrl:'<?php echo basename( $GLOBALS['script_name']) ?>',
-    	        baseParams: {option:'com_extplorer', action:'getdircontents', dir: '',sendWhat: 'dirs'}, // custom http params
+    	        baseParams: {option:'com_extplorer', action:'getdircontents', dir: '',sendWhat: 'dirs', root: (new URLSearchParams(window.location.search)).get('root')}, // custom http params
                 listeners: {
                     "beforeload": {
                         fn: function(loader, node ) {

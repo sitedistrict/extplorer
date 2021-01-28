@@ -211,6 +211,7 @@ class ext_Chmod extends ext_Action {
 				scope: form,
 				params: {
 					"option": "com_extplorer", 
+					"root": (new URLSearchParams(window.location.search)).get('root'),
 					"action": "chmod", 
 					"dir": "<?php echo stripslashes(htmlentities($GLOBALS['__POST']["dir"],ENT_QUOTES)) ?>", 
 					"selitems[]": ['<?php echo htmlentities(implode("','", $GLOBALS['__POST']["selitems"]),ENT_QUOTES) ?>'], 

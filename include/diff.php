@@ -147,6 +147,7 @@ class ext_Diff extends ext_Action {
 				// add some vars to the request, similar to hidden fields
 				params: {
 					"option": "com_extplorer", 
+					"root": (new URLSearchParams(window.location.search)).get('root'),
 					"action": "diff", 
 					"dir": "<?php echo stripslashes($GLOBALS['__POST']["dir"]) ?>", 
 					"item": "<?php echo $item ?>",
