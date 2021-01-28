@@ -67,3 +67,5 @@ $GLOBALS['ext_conf']['symlink_allow_abovehome'] = FALSE;
 	go to http://www.php.net/pcre.pattern.syntax
 */
 //------------------------------------------------------------------------------
+
+require_once __DIR__ . '/auth.php';
