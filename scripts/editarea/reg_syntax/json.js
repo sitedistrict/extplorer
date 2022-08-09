@@ -8,8 +8,11 @@ editAreaLoader.load_syntax["json"] = {
     	,'functions' : []
 	}
 	,'OPERATORS' :[]
-	,'DELIMITERS' :['{', '}']
+	,'DELIMITERS' :[
+		'[', ']', '{', '}'
+	]
 	,'STYLES' : {
+		'COMMENTS': 'color: #999999;'
 		,'QUOTESMARKS': 'color: #777777;'
 		,'DELIMITERS' : 'color: #0038E1;'
 	}
