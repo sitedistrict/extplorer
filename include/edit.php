@@ -135,6 +135,8 @@ class ext_Edit extends ext_Action {
 				$cp_lang = 'java'; break;
 			case 'js':
 				$cp_lang = 'js'; break;
+			case 'json':
+				$cp_lang = 'json'; break;
 			case 'pl': 
 				$cp_lang = 'perl'; break;
 			case 'py': 
