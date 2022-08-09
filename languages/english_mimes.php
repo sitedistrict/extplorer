@@ -18,6 +18,7 @@ $GLOBALS["mimes"]=array(
 	"perl"	=> "PERL Script",
 	"html"	=> "HTML Page",
 	"js"	=> "Javascript File",
+	"json"	=> "JSON File",
 	"css"	=> "CSS File",
 	"cgi"	=> "CGI Script",
 	// C++
